@@ -84,7 +84,7 @@ class SegmentNet(nn.Module):
         x3 = self.layer3(x2)
 
         # Squeeze
-        w = F.avg_pool2d(x3, x3.size(2))
+        w = F.avg_pool2d(x3, (x3.size(2), x3.size(3)))
         w = F.relu(self.fc1(w))
         w = torch.sigmoid(self.fc2(w))
         # Excitation
